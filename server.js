@@ -21,7 +21,7 @@ const sesh = {
 
 app.use(session(sesh));
 
-const helpers = require('./utils');
+const helpers = require('./utils/helpers');
 
 const hb = ehanldebars.create({ helpers });
 
