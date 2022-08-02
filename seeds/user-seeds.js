@@ -37,6 +37,21 @@ const userdata = [
         email: 'strawhat@yo.com',
         password: 'password123',
     },
+    {
+        username: 'OrangeBoi',
+        email: 'yo@yosef.yo',
+        password: 'password123',
+    },
+    {
+        username: 'lastUchiha',
+        email: 'clan@last.bet',
+        password: 'password123',
+    },
+    {
+        username: 'WhiteBeard',
+        email: 'uuuu@ooooo.net',
+        password: 'password123',
+    }
 ];
 
 const seedUsers = () => User.bulkCreate(userdata, {individualHooks: true});
