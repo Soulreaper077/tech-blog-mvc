@@ -6,7 +6,7 @@ const ehanldebars = require('express-handlebars');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const sequleize = require('./config/Connection');
+const sequelize = require('./config/Connection');
 const seqStore = require('connect-session-sequelize')(session.Store);
 
 const sesh = {
@@ -15,7 +15,7 @@ const sesh = {
     resave: false,
     saveUnitialized: true,
     store: new seqStore({
-        db: sequleize
+        db: sequelize
     }),
 };
 
