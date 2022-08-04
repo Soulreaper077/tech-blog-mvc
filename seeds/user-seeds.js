@@ -1,59 +1,59 @@
-const sequelize = require('../config/Connection');
+const sequelize = require('../config/connection');
 const { User, Post } = require('../models');
 
 const userdata = [
-    {
-        username: 'Soulreaper',
-        email: 'jesseponce233@gmail.com',
-        password: 'password123',
-    },
-    {
-        username: 'Chadman12',
-        email: 'chadman@yo.com',
-        password: 'password123',
-    },
-    {
-        username: 'Kittenpaw',
-        email: 'sample@example.com',
-        password: 'password123',
-    },
-    {
-        username: 'PirateHunter1',
-        email: 'pirate@sea.org',
-        password: 'password123',
-    },
-    {
-        username: 'yungKing',
-        email: 'kings@royale.com',
-        password: 'password123',
-    },
-    {
-        username: 'WolfgangAma',
-        email: 'wolfgang@pack.net',
-        password: 'password123',
-    },
-    {
-        username: 'StrawHat',
-        email: 'strawhat@yo.com',
-        password: 'password123',
-    },
-    {
-        username: 'OrangeBoi',
-        email: 'yo@yosef.yo',
-        password: 'password123',
-    },
-    {
-        username: 'lastUchiha',
-        email: 'clan@last.bet',
-        password: 'password123',
-    },
-    {
-        username: 'WhiteBeard',
-        email: 'uuuu@ooooo.net',
-        password: 'password123',
-    }
+  {
+    username: 'alesmonde0',
+    email: 'nwestnedge0@cbc.ca',
+    password: 'password123'
+  },
+  {
+    username: 'jwilloughway1',
+    email: 'rmebes1@sogou.com',
+    password: 'password123'
+  },
+  {
+    username: 'iboddam2',
+    email: 'cstoneman2@last.fm',
+    password: 'password123'
+  },
+  {
+    username: 'dstanmer3',
+    email: 'ihellier3@goo.ne.jp',
+    password: 'password123'
+  },
+  {
+    username: 'djiri4',
+    email: 'gmidgley4@weather.com',
+    password: 'password123'
+  },
+  {
+    username: 'msprague5',
+    email: 'larnout5@imdb.com',
+    password: 'password123'
+  },
+  {
+    username: 'mpergens6',
+    email: 'hnapleton6@feedburner.com',
+    password: 'password123'
+  },
+  {
+    username: 'tpenniell7',
+    email: 'kperigo7@china.com.cn',
+    password: 'password123'
+  },
+  {
+    username: 'msabbins8',
+    email: 'lmongain8@google.ru',
+    password: 'password123'
+  },
+  {
+    username: 'jmacarthur9',
+    email: 'bsteen9@epa.gov',
+    password: 'password123'
+  }
 ];
 
 const seedUsers = () => User.bulkCreate(userdata, {individualHooks: true});
 
-module.exports = seedUsers; 
+module.exports = seedUsers;

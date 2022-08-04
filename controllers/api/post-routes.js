@@ -1,28 +1,33 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Post, User, Comment } = require('../../models');
+const { Post, User, Comment, Vote } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // get all users
 router.get('/', (req, res) => {
   console.log('======================');
   Post.findAll({
-    attributes: ['id', 'title', 'post_text', 'created_at'],
+    attributes: [
+      'id',
+      'title',
+      'post_text',
+      'created_at',
+    ],
     order: [['created_at', 'DESC']],
     include: [
       {
-      model: User,
-      attributes: ['username']
-    },
-    {
         model: Comment,
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
-        model: User,
-        attributes: ['username'],
+          model: User,
+          attributes: ['username']
+        }
       },
-    },
-    ],
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
   })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {
@@ -71,9 +76,10 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', withAuth, (req, res) => {
-Post.create({
+  // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
+  Post.create({
     title: req.body.title,
-    post_text: req.body.post_text,
+    post_url: req.body.post_text,
     user_id: req.session.user_id
   })
     .then(dbPostData => res.json(dbPostData))
