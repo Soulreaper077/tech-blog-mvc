@@ -1,24 +1,26 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post, User, Comment, Vote } = require('../models');
+const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 // get all posts for dashboard
 router.get('/', withAuth, (req, res) => {
-  console.log(req.session);
-  console.log('======================');
   Post.findAll({
     where: {
       user_id: req.session.user_id
     },
     attributes: [
       'id',
-      'post_url',
       'title',
+      'post_text',
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
     ],
+    order: [['created_at', 'DESC']],
     include: [
+      {
+        model: User,
+        attributes: ['username']
+      },
       {
         model: Comment,
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
@@ -27,10 +29,6 @@ router.get('/', withAuth, (req, res) => {
           attributes: ['username']
         }
       },
-      {
-        model: User,
-        attributes: ['username']
-      }
     ]
   })
     .then(dbPostData => {
@@ -44,15 +42,18 @@ router.get('/', withAuth, (req, res) => {
 });
 
 router.get('/edit/:id', withAuth, (req, res) => {
-  Post.findByPk(req.params.id, {
+  Post.findOne(req.params.id, {
     attributes: [
       'id',
-      'post_url',
       'title',
+      'post-text',
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
     ],
     include: [
+      {
+        model: User,
+        attributes: ['username']
+      },
       {
         model: Comment,
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
@@ -61,10 +62,6 @@ router.get('/edit/:id', withAuth, (req, res) => {
           attributes: ['username']
         }
       },
-      {
-        model: User,
-        attributes: ['username']
-      }
     ]
   })
     .then(dbPostData => {
@@ -82,6 +79,10 @@ router.get('/edit/:id', withAuth, (req, res) => {
     .catch(err => {
       res.status(500).json(err);
     });
+});
+
+router.get('/new', (req, res) => {
+  res.render('new-post');
 });
 
 module.exports = router;
