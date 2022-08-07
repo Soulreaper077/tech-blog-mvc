@@ -13,6 +13,7 @@ body, html {
 a {
   text-decoration: none;
   color: #225ca3;
+  font-size: 20px; 
   font-weight: bold;
   transition: color .1s;
 }
@@ -39,6 +40,7 @@ button:hover {
 .post-list {
   margin: 0;
   padding: 0;
+  
 }
 
 textarea, input {
@@ -55,6 +57,7 @@ textarea:focus, input:focus {
 textarea {
   min-width: 40%;
   min-height: 100px;
+
 }
 
 form > div {
@@ -120,6 +123,7 @@ main {
 .post {
   margin-bottom: 2%;
   line-height: 150%;
+  border: 2px solid #225ca3; 
 }
 
 .post .title span {
