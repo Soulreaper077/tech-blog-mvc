@@ -123,7 +123,7 @@ main {
 .post {
   margin-bottom: 2%;
   line-height: 150%;
-  border: 2px solid #225ca3; 
+  border-bottom: 3px solid darkcyan;
 }
 
 .post .title span {
