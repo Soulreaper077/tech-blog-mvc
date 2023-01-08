@@ -5,6 +5,8 @@ This is the challenge for module 14 of the bootcamp. for this challenge, we were
 
 ## Deployed Website 
 [Tech-Blog-MVC0](https://obscure-badlands-86186.herokuapp.com)
+Click here!
 
 ## contact me 
 [Email](Jesseponce233@gmail.com)
+
